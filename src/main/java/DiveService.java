@@ -14,15 +14,13 @@ public class DiveService {
         for (Instruction instruction : instructions) {
             coordonnees = InstructionStrategy.of(instruction.nom).executer(coordonnees, instruction.valeur);
         }
-        return coordonnees.calculerValeurFinale();
+        return coordonnees.calculerValeur();
     }
 
     private record Coordonnees(int profondeur, int avancementHorizontal) {
-
-        public int calculerValeurFinale(){
+        public int calculerValeur(){
             return profondeur*avancementHorizontal;
         }
-
     }
 
     private enum InstructionStrategy {
