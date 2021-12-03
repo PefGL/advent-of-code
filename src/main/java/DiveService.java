@@ -8,17 +8,22 @@ import java.util.function.BiFunction;
 
 public class DiveService {
 
-    public int recupererPosition(final File inputs) throws IOException {
-        Coordonnees coordonnees = new Coordonnees(0, 0, 0);
+    public int calculerValeurPlongee(final File inputs) throws IOException {
+        Coordonnees coordonnees = new Coordonnees();
         List<Instruction> instructions = recupererListeInstructionsDepuisFichier(inputs);
         for (Instruction instruction : instructions) {
             coordonnees = InstructionStrategy.of(instruction.nom).executer(coordonnees, instruction.valeur);
         }
-        return coordonnees.calculerValeur();
+        return coordonnees.calculerValeurPlongee();
     }
 
     private record Coordonnees(int profondeur, int avancementHorizontal, int cible) {
-        public int calculerValeur() {
+
+        public Coordonnees() {
+            this(0, 0, 0);
+        }
+
+        public int calculerValeurPlongee() {
             return profondeur * avancementHorizontal;
         }
     }

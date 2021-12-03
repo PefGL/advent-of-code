@@ -13,7 +13,7 @@ public class DiveServiceTest {
         int attendu = 0;
         File inputs = TestUtil.construireInput("");
 
-        int position = diveService.recupererPosition(inputs);
+        int position = diveService.calculerValeurPlongee(inputs);
 
         Assert.assertEquals(attendu, position);
     }
@@ -23,7 +23,7 @@ public class DiveServiceTest {
         int attendu = 0;
         File inputs = TestUtil.construireInput("forward 0","down 1");
 
-        int position = diveService.recupererPosition(inputs);
+        int position = diveService.calculerValeurPlongee(inputs);
 
         Assert.assertEquals(attendu, position);
     }
@@ -33,7 +33,7 @@ public class DiveServiceTest {
         int attendu = 900;
         File inputs = TestUtil.construireInput("forward 5","down 5","forward 8","up 3", "down 8", "forward 2");
 
-        int position = diveService.recupererPosition(inputs);
+        int position = diveService.calculerValeurPlongee(inputs);
 
         Assert.assertEquals(attendu, position);
     }

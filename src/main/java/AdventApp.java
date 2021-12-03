@@ -12,7 +12,7 @@ public class AdventApp {
 
 
         DiveService diveService = new DiveService();
-        int sortieDive = diveService.recupererPosition(utils.lireFichier("input_dive"));
+        int sortieDive = diveService.calculerValeurPlongee(utils.lireFichier("input_dive"));
         System.out.println(sortieDive);
     }
 }
