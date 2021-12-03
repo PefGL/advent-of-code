@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class Metier {
+public class AdventService {
 
     public int nombreMesuresQuiAugmentent(final File inputs) throws IOException {
         List<Integer> chiffresInput = recupererListeDEntiersDepuisFichier(inputs);

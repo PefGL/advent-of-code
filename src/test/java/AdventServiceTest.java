@@ -9,16 +9,16 @@ import java.nio.file.Paths;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class MetierTest {
+public class AdventServiceTest {
 
-    private final Metier metier = new Metier();
+    private final AdventService adventService = new AdventService();
 
     @Test
     public void retourne_1_si_fichier_avec_1_2_3_4() throws IOException {
         Integer attendu = 1;
         File input = construireInput("1", "2", "3", "4");
 
-        Integer obtenu = metier.nombreMesuresQuiAugmentent(input);
+        Integer obtenu = adventService.nombreMesuresQuiAugmentent(input);
 
         assertEquals(attendu, obtenu);
     }
@@ -28,7 +28,7 @@ public class MetierTest {
         Integer attendu = 2;
         File input = construireInput("1", "2", "3", "4", "5");
 
-        Integer obtenu = metier.nombreMesuresQuiAugmentent(input);
+        Integer obtenu = adventService.nombreMesuresQuiAugmentent(input);
 
         assertEquals(attendu, obtenu);
     }
@@ -38,7 +38,7 @@ public class MetierTest {
         Integer attendu = 1;
         File input = construireInput("1", "2", "3", "4", "1");
 
-        Integer obtenu = metier.nombreMesuresQuiAugmentent(input);
+        Integer obtenu = adventService.nombreMesuresQuiAugmentent(input);
 
         assertEquals(attendu, obtenu);
     }
@@ -48,7 +48,7 @@ public class MetierTest {
         Integer attendu = 0;
         File input = construireInput("1", "1", "1", "1");
 
-        Integer obtenu = metier.nombreMesuresQuiAugmentent(input);
+        Integer obtenu = adventService.nombreMesuresQuiAugmentent(input);
 
         assertEquals(attendu, obtenu);
     }
@@ -58,7 +58,7 @@ public class MetierTest {
         Integer attendu = 0;
         File input = construireInput("1");
 
-        Integer obtenu = metier.nombreMesuresQuiAugmentent(input);
+        Integer obtenu = adventService.nombreMesuresQuiAugmentent(input);
 
         assertEquals(attendu, obtenu);
     }
@@ -66,7 +66,7 @@ public class MetierTest {
     @Test
     public void lecture_fichier() {
         try {
-            metier.lireFichier("input_test");
+            adventService.lireFichier("input_test");
         } catch (URISyntaxException e) {
             Assert.fail();
         }
