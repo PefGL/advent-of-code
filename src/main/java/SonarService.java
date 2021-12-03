@@ -6,9 +6,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class AdventService {
+public class SonarService {
 
-    public int nombreMesuresQuiAugmentent(final File inputs) throws IOException {
+    public int calculerNombreMesuresQuiAugmentent(final File inputs) throws IOException {
         List<Integer> chiffresInput = recupererListeDEntiersDepuisFichier(inputs);
         return compterPlagesDeChiffresQuiAugmentent(chiffresInput);
     }

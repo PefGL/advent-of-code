@@ -4,8 +4,8 @@ import java.net.URISyntaxException;
 public class AdventApp {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        AdventService day1 = new AdventService();
-        int sortie = day1.nombreMesuresQuiAugmentent(day1.lireFichier("input"));
+        SonarService day1 = new SonarService();
+        int sortie = day1.calculerNombreMesuresQuiAugmentent(day1.lireFichier("input_sonar"));
         System.out.println(sortie);
     }
 }
