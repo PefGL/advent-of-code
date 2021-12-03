@@ -39,11 +39,6 @@ public class SonarService {
             .reduce(0, Integer::sum);
     }
 
-    public File lireFichier(final String nomFichier) throws URISyntaxException {
-        URL res = getClass().getClassLoader().getResource(nomFichier);
-        return Paths.get(res.toURI()).toFile();
-    }
-
     private List<Integer> recupererListeDEntiersDepuisFichier(final File inputs) throws IOException {
         return Files.lines(Paths.get(inputs.toURI()))//
             .map(Integer::parseInt)//

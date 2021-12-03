@@ -13,6 +13,7 @@ public class SonarServiceTest {
 
     private final SonarService sonarService = new SonarService();
 
+
     @Test
     public void retourne_1_si_fichier_avec_1_2_3_4() throws IOException {
         Integer attendu = 1;
@@ -62,15 +63,5 @@ public class SonarServiceTest {
 
         assertEquals(attendu, obtenu);
     }
-
-    @Test
-    public void lecture_fichier() {
-        try {
-            sonarService.lireFichier("input_test");
-        } catch (URISyntaxException e) {
-            Assert.fail();
-        }
-    }
-
 
 }

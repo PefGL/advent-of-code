@@ -4,8 +4,15 @@ import java.net.URISyntaxException;
 public class AdventApp {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        SonarService day1 = new SonarService();
-        int sortie = day1.calculerNombreMesuresQuiAugmentent(day1.lireFichier("input_sonar"));
-        System.out.println(sortie);
+        Utils utils
+             = new Utils();
+        SonarService sonarService = new SonarService();
+        int sortieSonar = sonarService.calculerNombreMesuresQuiAugmentent(utils.lireFichier("input_sonar"));
+        System.out.println(sortieSonar);
+
+
+        DiveService diveService = new DiveService();
+        int sortieDive = diveService.recupererPosition(utils.lireFichier("input_dive"));
+        System.out.println(sortieDive);
     }
 }
