@@ -9,7 +9,7 @@ import java.util.function.BiFunction;
 public class DiveService {
 
     public int recupererPosition(final File inputs) throws IOException {
-        Coordonnees coordonnees = new Coordonnees(0, 0);
+        Coordonnees coordonnees = new Coordonnees(0, 0, 0);
         List<Instruction> instructions = recupererListeInstructionsDepuisFichier(inputs);
         for (Instruction instruction : instructions) {
             coordonnees = InstructionStrategy.of(instruction.nom).executer(coordonnees, instruction.valeur);
@@ -17,16 +17,19 @@ public class DiveService {
         return coordonnees.calculerValeur();
     }
 
-    private record Coordonnees(int profondeur, int avancementHorizontal) {
-        public int calculerValeur(){
-            return profondeur*avancementHorizontal;
+    private record Coordonnees(int profondeur, int avancementHorizontal, int cible) {
+        public int calculerValeur() {
+            return profondeur * avancementHorizontal;
         }
     }
 
     private enum InstructionStrategy {
-        MONTER("up", (coordonnees, valeur) -> new Coordonnees(coordonnees.profondeur() - valeur, coordonnees.avancementHorizontal())), //
-        DESCENDRE("down", (coordonnees, valeur) -> new Coordonnees(coordonnees.profondeur() + valeur, coordonnees.avancementHorizontal())), //
-        AVANCER("forward", (coordonnees, valeur) -> new Coordonnees(coordonnees.profondeur(), coordonnees.avancementHorizontal() + valeur));
+        MONTER("up",
+            (coordonnees, valeur) -> new Coordonnees(coordonnees.profondeur(), coordonnees.avancementHorizontal(), coordonnees.cible - valeur)), //
+        DESCENDRE("down",
+            (coordonnees, valeur) -> new Coordonnees(coordonnees.profondeur(), coordonnees.avancementHorizontal(), coordonnees.cible + valeur)), //
+        AVANCER("forward", (coordonnees, valeur) -> new Coordonnees(coordonnees.profondeur() + coordonnees.cible * valeur,
+            coordonnees.avancementHorizontal() + valeur, coordonnees.cible));
 
         private final String nom;
 
