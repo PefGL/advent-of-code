@@ -14,5 +14,9 @@ public class AdventApp {
         DiveService diveService = new DiveService();
         int sortieDive = diveService.calculerValeurPlongee(utils.lireFichier("input_dive"));
         System.out.println(sortieDive);
+
+        BinaryDiagnosticService binaryDiagnosticService = new BinaryDiagnosticService();
+        int consommation = binaryDiagnosticService.calculerConsommation(utils.lireFichier("input_consommation"));
+        System.out.println(consommation);
     }
 }
