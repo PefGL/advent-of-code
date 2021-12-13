@@ -89,7 +89,7 @@ public class BinaryDiagnosticService {
             return "1";
         }
 
-        public boolean bitsPlusEtMoinsCommunsEgaux(){
+        public boolean bitsPlusEtMoinsCommunsEgaux() {
             return bitLeMoinsCommun().equals(bitLePlusCommun());
         }
 
@@ -102,13 +102,14 @@ public class BinaryDiagnosticService {
     }
 
     private enum LectureRapportStrategy {
-        OXYGEN("OXYGEN", (ligne, colonnesRapport, indiceColonne) ->colonnesRapport.get(indiceColonne).bitsPlusEtMoinsCommunsEgaux() ? ligne.startsWith("1") : colonnesRapport.get(indiceColonne)
-            .bitLePlusCommun().equals(String.valueOf(ligne.charAt(indiceColonne)))), //
-        CO2("CO2", (ligne, colonnesRapport, indiceColonne) -> colonnesRapport.get(indiceColonne).bitLePlusCommun()
-            .equals(colonnesRapport.get(indiceColonne).bitLeMoinsCommun()) ? ligne.startsWith("0") : colonnesRapport.get(indiceColonne)
-            .bitLeMoinsCommun().equals(String.valueOf(ligne.charAt(indiceColonne))));
+        OXYGEN("OXYGEN", (ligne, colonnesRapport, indiceColonne) -> colonnesRapport.get(indiceColonne).bitsPlusEtMoinsCommunsEgaux() ?
+            ligne.startsWith("1") : colonnesRapport.get(indiceColonne).bitLePlusCommun().equals(String.valueOf(ligne.charAt(indiceColonne)))), //
+
+        CO2("CO2", (ligne, colonnesRapport, indiceColonne) -> colonnesRapport.get(indiceColonne).bitsPlusEtMoinsCommunsEgaux() ?
+            ligne.startsWith("0") : colonnesRapport.get(indiceColonne).bitLeMoinsCommun().equals(String.valueOf(ligne.charAt(indiceColonne))));
 
         private final String type;
+
         private final TriFunction<String, List<ColonneRapport>, Integer, Boolean> function;
 
         LectureRapportStrategy(final String type, final TriFunction<String, List<ColonneRapport>, Integer, Boolean> function) {
