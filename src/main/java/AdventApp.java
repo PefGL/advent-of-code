@@ -16,7 +16,8 @@ public class AdventApp {
         System.out.println(sortieDive);
 
         BinaryDiagnosticService binaryDiagnosticService = new BinaryDiagnosticService();
-        int consommation = binaryDiagnosticService.calculerConsommation(utils.lireFichier("input_consommation"));
+        int consommation = binaryDiagnosticService.calculerLifeSuppportRating(utils.lireFichier("input_consommation"));
         System.out.println(consommation);
+
     }
 }
